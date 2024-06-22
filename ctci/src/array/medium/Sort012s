@@ -1,0 +1,30 @@
+//Given an array of size N containing only 0s, 1s, and 2s; sort the array in ascending order.
+
+class Solution
+{
+    public static void sort012(int a[], int n)
+    {
+        // code here
+        int[] count = new int[3];
+        for(int i : a){
+            if(i == 0) count[0] += 1;
+            if(i == 1) count[1] += 1;
+            if(i == 2) count[2] += 1;
+        }
+        int i = 0, in = 0;;
+        while(i < count[0]){
+            a[i] = 0;
+            i++;in++;
+        }
+        i=0;
+        while(i < count[1]){
+            a[in] = 1;
+            i++;in++;
+        }
+        i=0;
+        while(i < count[2]){
+            a[in] = 2;
+            i++;in++;
+        }
+    }
+}

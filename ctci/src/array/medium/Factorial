@@ -1,0 +1,27 @@
+//Given an integer N, find its factorial. return a list of integers denoting the digits that make up the factorial of N.
+
+class Solution {
+    static ArrayList<Integer> factorial(int N) {
+        // code here
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
+        int carry = 0;
+        for(int j=1;j<=N;j++){
+            for(int i =0;i < list.size();i++){
+                int unit = list.get(i);
+                int mul = unit*j + carry;
+                carry = mul/10;
+                list.set(i,mul%10);
+            }
+            while(carry != 0){
+                list.add(carry%10);
+                carry/=10;
+            }
+        }
+        //1
+        //j=2,2
+        //j=3,
+        Collections.reverse(list);
+        return list;
+    }
+}

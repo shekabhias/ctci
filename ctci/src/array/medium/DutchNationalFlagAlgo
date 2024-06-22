@@ -1,0 +1,20 @@
+//Given an array of size N containing only 0s, 1s, and 2s; sort the array in ascending order.
+
+public static void sortColors(int[] nums) {
+    int low = 0;
+    int mid = 0;
+    int high = nums.length - 1;
+
+    while (mid <= high) {
+        if (nums[mid] == 0) {
+            swap(nums, low, mid);
+            low++;
+            mid++;
+        } else if (nums[mid] == 1) {
+            mid++;
+        } else { // nums[mid] == 2
+            swap(nums, mid, high);
+            high--;
+        }
+    }
+}

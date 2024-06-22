@@ -1,0 +1,21 @@
+
+
+// User function Template for Java
+
+class Solution {
+    // Function to return the position of the first repeating element.
+    public static int firstRepeated(int[] arr, int n) {
+        // Your code here
+        int least = Integer.MAX_VALUE;
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i = 0;i < n;i++){
+            if(map.containsKey(arr[i])){
+                if(least > map.get(arr[i])) least = map.get(arr[i]);
+            }else{
+                map.put(arr[i],i);
+            }
+        }
+        if(least == Integer.MAX_VALUE) return -1;
+        return least+1;
+    }
+}

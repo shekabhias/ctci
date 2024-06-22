@@ -1,0 +1,21 @@
+int getPairsCount(int[] arr, int n, int k) {
+    // code here
+    Arrays.sort(arr);
+    int l = 0,r=n-1;
+    int count = 0;
+    while(l < r){
+        int temp = arr[l] + arr[r];
+        if(temp == k){
+            count++;
+            int i = l+1 , j = r-1;
+            while(i<n && i<r && arr[i] == arr[l]) {count++;i++;};
+            while(r>0 && j>l && arr[j] == arr[r]) {count++;j--;};
+            l++;r--;
+        }else if(temp < k){
+            l++;
+        }else{
+            r--;
+        }
+    }
+    return count;
+}

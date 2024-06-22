@@ -1,0 +1,18 @@
+public static ArrayList<Integer> duplicates(int arr[], int n) {
+    // code here
+    Map<Integer,Integer> map = new HashMap<>();
+    Set<Integer> set = new HashSet<>();
+    for (int i : arr){
+        if(map.containsKey(i)){
+            set.add(i);
+        }else{
+            map.put(i, map.getOrDefault(i,0)+1);
+        }
+    }
+    ArrayList<Integer> list = new ArrayList<>();
+    list.addAll(set);
+    Collections.sort(list);
+    return list.size() == 0 ? new ArrayList(){{
+        add(-1);
+    }} : list;
+}

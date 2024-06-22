@@ -1,0 +1,51 @@
+//element that appears strictly more than N/2 times in the array.
+//Boyer moore voting algo
+
+
+//User function Template for Java
+
+class Solution
+{
+    static int majorityElement(int a[], int size)
+    {
+        // your code here
+        int candidate = findCandidate(a);
+
+        // Phase 2: Verify the candidate
+        if (isMajority(a, candidate)) {
+            return candidate;
+        } else {
+            return -1;
+        }
+
+    }
+     private static int findCandidate(int[] nums) {
+        int candidate = nums[0];
+        int count = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == candidate) {
+                count++;
+            } else {
+                count--;
+                if (count == 0) {
+                    candidate = nums[i];
+                    count = 1;
+                }
+            }
+        }
+
+        return candidate;
+    }
+
+    private static boolean isMajority(int[] nums, int candidate) {
+        int count = 0;
+        for (int num : nums) {
+            if (num == candidate) {
+                count++;
+            }
+        }
+
+        return count > nums.length / 2;
+    }
+}

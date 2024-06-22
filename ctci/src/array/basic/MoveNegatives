@@ -1,0 +1,25 @@
+//Move all negative elements to end
+public void segregateElements(int arr[], int n) {
+    // Your code goes here
+    List<Integer> positives = new ArrayList<>();
+    List<Integer> negatives = new ArrayList<>();
+
+    for (int num : arr) {
+        if (num >= 0) {
+            positives.add(num);
+        } else {
+            negatives.add(num);
+        }
+    }
+
+    int index = 0;
+
+    for (int num : positives) {
+        arr[index++] = num;
+    }
+
+    for (int num : negatives) {
+        arr[index++] = num;
+    }
+
+}

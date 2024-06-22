@@ -1,0 +1,21 @@
+//Find the first non-repeating element in a given array arr of n integers and if there is not present any non-repeating element then return 0
+public int firstNonRepeating(int arr[], int n)
+{
+    // Complete the function
+    Map<Integer,Integer> map = new LinkedHashMap<>();
+    for(int i : arr){
+        if(map.containsKey(i)){
+            map.put(i,map.get(i)+1);
+        }else{
+            map.put(i,1);
+        }
+    }
+    int ret = 0;
+    for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+        if(entry.getValue()==1) {
+            ret = entry.getKey();
+            break;
+        }
+    }
+    return ret;
+}
